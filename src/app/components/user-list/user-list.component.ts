@@ -49,7 +49,7 @@ export class UserListComponent implements OnInit {
     private store = inject(Store);
 
     displayedColumns: string[] = ['Name', 'E-Mail', 'Rolle', 'Angemeldet', 'deletion'];
-    users$ = this.store.select(selectUsers);
+    users$ = null;
 
     constructor(private router: Router) {
     }
@@ -63,6 +63,6 @@ export class UserListComponent implements OnInit {
     }
 
   ngOnInit(): void {
-
+    this.users$ = this.store.select(selectUsers);
   }
 }

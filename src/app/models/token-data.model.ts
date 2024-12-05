@@ -1,4 +1,4 @@
 export class TokenData {
   expiresAt?: Date;
-  userName: string = '';
+  userName = '';
 }

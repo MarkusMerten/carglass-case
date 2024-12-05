@@ -57,7 +57,7 @@ export class LoginComponent {
           this.store.dispatch(markUserAsLoggedIn({eMail: this.formGroup.controls['email'].value}));
           this.router.navigate(['user-list']).then();
         } else {
-          this.loginErrorMessage.set('Anmeldung nicht erfolgreich. Passwort oder E-Mail falsch');
+          this.loginErrorMessage.set('Anmeldung nicht erfolgreich. Passwort oder E-Mail falsch!');
         }
       });
     }
