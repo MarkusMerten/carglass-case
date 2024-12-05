@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
+import {AppConstants} from '@constants/app-constants';
 
 @Component({
   selector: 'app-header',
@@ -29,7 +30,7 @@ export class HeaderComponent {
 
   logout(): void {
     this.authService.logout().subscribe(() => {
-      this.router.navigate([""]).then();
+      this.router.navigate([AppConstants.LOGIN_ROUTE]).then();
     });
   }
 }

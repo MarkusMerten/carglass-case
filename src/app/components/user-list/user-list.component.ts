@@ -19,6 +19,7 @@ import { Store } from '@ngrx/store';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { selectUsers } from '@state/user/user.selector';
 import { removeUser } from '@state/user/user.actions';
+import {AppConstants} from '@constants/app-constants';
 
 @Component({
   selector: 'app-user-list',
@@ -45,11 +46,11 @@ import { removeUser } from '@state/user/user.actions';
   styleUrl: './user-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent {
     private store = inject(Store);
 
     displayedColumns: string[] = ['Name', 'E-Mail', 'Rolle', 'Angemeldet', 'deletion'];
-    users$ = null;
+    users$ = this.store.select(selectUsers);
 
     constructor(private router: Router) {
     }
@@ -59,10 +60,7 @@ export class UserListComponent implements OnInit {
     }
 
     createNewUser(): void {
-      this.router.navigate(['user-create']).then();
+      this.router.navigate([AppConstants.USER_CREATE_ROUTE]).then();
     }
 
-  ngOnInit(): void {
-    this.users$ = this.store.select(selectUsers);
-  }
 }

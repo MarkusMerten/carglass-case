@@ -5,6 +5,8 @@ import { inject, NgModule } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserListComponent } from '@components/user-list/user-list.component';
 import { UserCreateComponent } from '@components/user-create/user-create.component';
+import { LoginGuardService } from './guards/login-guard.service';
+import { AppConstants } from '@constants/app-constants';
 
 const authGuard = (
   route: ActivatedRouteSnapshot,
@@ -12,20 +14,32 @@ const authGuard = (
 ): Observable<boolean> | Promise<boolean> | boolean =>
   inject(AuthGuardService).canActivate(route, state);
 
+const loginGuard = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot,
+): Observable<boolean> | Promise<boolean> | boolean =>
+  inject(LoginGuardService).canActivate(route, state);
+
 export const INIT_ROUTES: Routes = [
   {
-    path: '',
+    path: `${AppConstants.LOGIN_ROUTE}`,
     component: LoginComponent,
+    canActivate: [loginGuard]
   },
   {
-    path: `user-list`,
+    path: `${AppConstants.USER_LIST_ROUTE}`,
     component: UserListComponent,
     canActivate: [authGuard]
   },
   {
-    path: `user-create`,
+    path: `${AppConstants.USER_CREATE_ROUTE}`,
     component: UserCreateComponent,
     canActivate: [authGuard],
+  },
+  {
+    path: '**',
+    component: LoginComponent,
+    canActivate: [loginGuard],
   },
 ];
 @NgModule({

@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return localStorage.getItem(this.TOKEN_KEY) !== null;
+    return !!localStorage.getItem(this.TOKEN_KEY);
   }
 
   private initTokenData(token: string): void {

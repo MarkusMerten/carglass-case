@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnInit, signal} from '@angular/core';
 import { AuthService } from '@services/auth.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgIf } from '@angular/common';
@@ -9,6 +9,7 @@ import { merge } from 'rxjs';
 import { MatButton } from '@angular/material/button';
 import { Store } from '@ngrx/store';
 import { markUserAsLoggedIn } from '@state/user/user.actions';
+import {AppConstants} from '@constants/app-constants';
 
 @Component({
   selector: 'app-login',
@@ -55,7 +56,7 @@ export class LoginComponent {
         this.loginErrorMessage.set('');
         if (value) {
           this.store.dispatch(markUserAsLoggedIn({eMail: this.formGroup.controls['email'].value}));
-          this.router.navigate(['user-list']).then();
+          this.router.navigate([AppConstants.USER_LIST_ROUTE]).then();
         } else {
           this.loginErrorMessage.set('Anmeldung nicht erfolgreich. Passwort oder E-Mail falsch!');
         }

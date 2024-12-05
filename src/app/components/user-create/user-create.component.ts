@@ -12,6 +12,7 @@ import { Store } from '@ngrx/store';
 import { addUser } from '@state/user/user.actions';
 import { User } from '@models/user.model';
 import { Router } from '@angular/router';
+import {AppConstants} from '@constants/app-constants';
 
 @Component({
   selector: 'app-user-create',
@@ -53,7 +54,7 @@ export class UserCreateComponent {
     if (this.formGroup.valid) {
       const user: User = {eMail: this.formGroup.controls['email'].value, name: this.formGroup.controls['name'].value, role: this.formGroup.controls['role'].value, loginDate: null};
       this.store.dispatch(addUser({user: user}));
-      this.router.navigate(["user-list"]).then();
+      this.router.navigate([AppConstants.USER_LIST_ROUTE]).then();
     }
   }
 
