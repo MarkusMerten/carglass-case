@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@include mat.core();
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 30px;
+  height: 100%;
+}
+
+html {
+  color-scheme: light;
+}
+
+$custom-primary: mat.define-palette(mat.$deep-purple-palette);
+$custom-accent: mat.define-palette(mat.$deep-purple-palette, 200, 500, 700);
+
+$custom-theme: mat.define-light-theme((
+  color: (
+    primary: $custom-primary,
+    accent: $custom-accent,
+  ),
+));
+
+.mat-mini-fab.custom-theme {
+  @include mat.all-component-themes($custom-theme);
+  background-color: mat.get-color-from-palette($custom-primary, 500);
+  color: white;
+}

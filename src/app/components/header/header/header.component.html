@@ -1,0 +1,8 @@
+<mat-toolbar *ngIf="token()">
+  <span>Carclass Case</span>
+  <span class="spacer"></span>
+  <span>{{ token()?.userName }}</span>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>

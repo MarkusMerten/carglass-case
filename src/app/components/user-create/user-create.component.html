@@ -1,0 +1,35 @@
+<div class="create-container">
+  <form [formGroup]="formGroup" (ngSubmit)="save()">
+    <h2>Neuer Benutzer</h2>
+
+    <mat-form-field class="tw-w-[100%]">
+      <mat-label>Name</mat-label>
+      <input id="name" type="text" formControlName="name" matInput required/>
+      @if (formGroup.get('name')?.invalid) {
+        <mat-error>Bitte gebe einen Namen an!</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="tw-w-[100%]">
+      <mat-label>Email</mat-label>
+      <input id="email" type="email" formControlName="email" matInput required/>
+      @if (formGroup.get('email')?.invalid) {
+        <mat-error>{{eMailErrorMessage()}}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="tw-w-[100%]">
+      <mat-label>Rolle</mat-label>
+      <mat-select formControlName="role" required>
+        @for (role of getRoles; track role) {
+          <mat-option [value]="role">{{role}}</mat-option>
+        }
+      </mat-select>
+      @if (formGroup.get('role')?.invalid) {
+        <mat-error>Bitte wähle eine Rolle aus!</mat-error>
+      }
+    </mat-form-field>
+
+    <button type="submit" mat-button>Speichern</button>
+  </form>
+</div>

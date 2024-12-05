@@ -1,0 +1,27 @@
+<div class="login-container">
+  <form [formGroup]="formGroup" (ngSubmit)="login()">
+    <h2>Login</h2>
+
+    <mat-form-field class="tw-w-[100%]">
+      <mat-label>Email</mat-label>
+      <input id="email" type="email" formControlName="email" matInput required/>
+      @if (formGroup.get('email')?.invalid && formGroup.get('email')?.touched) {
+        <mat-error>{{eMailErrorMessage()}}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="tw-w-[100%] tw-bg-white">
+      <mat-label>Passwort</mat-label>
+      <input id="password" type="password" formControlName="password" matInput required/>
+      @if (formGroup.get('password')?.invalid && formGroup.get('password')?.touched) {
+        <mat-error>{{passwordErrorMessage()}}</mat-error>
+      }
+    </mat-form-field>
+
+    @if (loginErrorMessage()) {
+      <mat-error>{{loginErrorMessage()}}</mat-error>
+    }
+
+    <button type="submit" [disabled]="formGroup.invalid" mat-button>Anmelden</button>
+  </form>
+</div>
