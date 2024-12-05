@@ -12,7 +12,7 @@ import { Store } from '@ngrx/store';
 import { addUser } from '@state/user/user.actions';
 import { User } from '@models/user.model';
 import { Router } from '@angular/router';
-import {AppConstants} from '@constants/app-constants';
+import { AppConstants } from '@constants/app-constants';
 
 @Component({
   selector: 'app-user-create',

@@ -9,7 +9,7 @@ import { merge } from 'rxjs';
 import { MatButton } from '@angular/material/button';
 import { Store } from '@ngrx/store';
 import { markUserAsLoggedIn } from '@state/user/user.actions';
-import {AppConstants} from '@constants/app-constants';
+import { AppConstants } from '@constants/app-constants';
 
 @Component({
   selector: 'app-login',

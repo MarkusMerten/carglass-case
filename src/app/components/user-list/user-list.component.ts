@@ -19,7 +19,7 @@ import { Store } from '@ngrx/store';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { selectUsers } from '@state/user/user.selector';
 import { removeUser } from '@state/user/user.actions';
-import {AppConstants} from '@constants/app-constants';
+import { AppConstants } from '@constants/app-constants';
 
 @Component({
   selector: 'app-user-list',
