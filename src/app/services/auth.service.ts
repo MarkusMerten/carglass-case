@@ -10,9 +10,9 @@ import { clearToken, setToken } from '@state/auth/auth.actions';
 export class AuthService {
   private readonly TOKEN_KEY = 'authToken';
 
-  private store = inject(Store);
+  private store: Store<TokenData> = inject(Store<TokenData>);
 
-  login(username: string, password: string): Observable<boolean> {
+  public login(username: string, password: string): Observable<boolean> {
     if ((username === 'markus_merten@gmx.net' || username === 'krichter@gmx.de') && password === '123456') {
       this.initTokenData(username);
       return of(true);
@@ -20,13 +20,13 @@ export class AuthService {
     return of(false);
   }
 
-  logout(): Observable<boolean> {
+  public logout(): Observable<boolean> {
     localStorage.removeItem(this.TOKEN_KEY);
     this.store.dispatch(clearToken());
     return of(true);
   }
 
-  isLoggedIn(): boolean {
+  public isLoggedIn(): boolean {
     return !!localStorage.getItem(this.TOKEN_KEY);
   }
 
@@ -38,7 +38,7 @@ export class AuthService {
     this.store.dispatch(setToken({token: tokenData}));
   }
 
-  loadTokenFromStorage(): void {
+  public loadTokenFromStorage(): void {
     // Token aus LocalStorage laden und in den Store dispatchen
     const token = localStorage.getItem(this.TOKEN_KEY);
     if (token) {

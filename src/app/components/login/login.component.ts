@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, OnInit, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
 import { AuthService } from '@services/auth.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgIf } from '@angular/common';
@@ -31,14 +31,14 @@ export class LoginComponent {
 
   private store = inject(Store);
 
-  formGroup: FormGroup = new FormGroup({
+  public formGroup: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
-  eMailErrorMessage = signal('');
-  passwordErrorMessage = signal('');
-  loginErrorMessage = signal('');
+  public eMailErrorMessage: WritableSignal<string> = signal('');
+  public passwordErrorMessage: WritableSignal<string> = signal('');
+  public loginErrorMessage: WritableSignal<string> = signal('');
 
   constructor(private authService: AuthService, private router: Router) {
     merge(this.formGroup.controls['email'].statusChanges, this.formGroup.controls['email'].valueChanges)
@@ -50,7 +50,7 @@ export class LoginComponent {
       .subscribe(() => this.updatePasswordError());
   }
 
-  login() : void {
+  public login() : void {
     if (this.formGroup.valid) {
       this.authService.login(this.formGroup.controls['email'].value, this.formGroup.controls['password'].value).subscribe((value: boolean) => {
         this.loginErrorMessage.set('');

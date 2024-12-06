@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import {Component, inject, Signal} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectToken } from '@state/auth/auth.selector';
 import { NgIf } from '@angular/common';
@@ -8,6 +8,7 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
 import { AppConstants } from '@constants/app-constants';
+import {TokenData} from '@models/token-data.model';
 
 @Component({
   selector: 'app-header',
@@ -23,12 +24,12 @@ import { AppConstants } from '@constants/app-constants';
 })
 export class HeaderComponent {
   private store = inject(Store);
-  token = this.store.selectSignal(selectToken);
+  public token: Signal<TokenData | null> = this.store.selectSignal(selectToken);
 
   constructor(private authService: AuthService, private router: Router) {
   }
 
-  logout(): void {
+  public logout(): void {
     this.authService.logout().subscribe(() => {
       this.router.navigate([AppConstants.LOGIN_ROUTE]).then();
     });

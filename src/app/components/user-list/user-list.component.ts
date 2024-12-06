@@ -20,6 +20,7 @@ import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import { selectUsers } from '@state/user/user.selector';
 import { removeUser } from '@state/user/user.actions';
 import { AppConstants } from '@constants/app-constants';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-list',
@@ -50,18 +51,16 @@ import { AppConstants } from '@constants/app-constants';
 })
 export class UserListComponent {
     private store = inject(Store);
+    public displayedColumns: string[] = ['Name', 'E-Mail', 'Rolle', 'Angemeldet', 'deletion'];
+    public users$: Observable<User[]> = this.store.select(selectUsers);
 
-    displayedColumns: string[] = ['Name', 'E-Mail', 'Rolle', 'Angemeldet', 'deletion'];
-    users$ = this.store.select(selectUsers);
+    constructor(private router: Router) {}
 
-    constructor(private router: Router) {
-    }
-
-    onDelete(user: User): void {
+    public onDelete(user: User): void {
       this.store.dispatch(removeUser({user}));
     }
 
-    createNewUser(): void {
+    public createNewUser(): void {
       this.router.navigate([AppConstants.USER_CREATE_ROUTE]).then();
     }
 

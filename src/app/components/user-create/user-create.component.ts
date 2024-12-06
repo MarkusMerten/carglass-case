@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, signal, WritableSignal } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
@@ -34,13 +34,13 @@ import { AppConstants } from '@constants/app-constants';
 export class UserCreateComponent {
   private store = inject(Store);
 
-  formGroup: FormGroup = new FormGroup({
+  public formGroup: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     role: new FormControl('', [Validators.required])
   });
 
-  eMailErrorMessage = signal('');
+  public eMailErrorMessage: WritableSignal<string> = signal('');
 
   constructor(private router: Router) {
     merge(this.formGroup.controls['email'].statusChanges, this.formGroup.controls['email'].valueChanges)
@@ -48,7 +48,7 @@ export class UserCreateComponent {
       .subscribe(() => this.updateMailError());
   }
 
-  save() : void {
+  public save() : void {
     this.updateMailError();
 
     if (this.formGroup.valid) {
