@@ -1,5 +1,63 @@
-.list-container {
-  width: 96%;
+.user-list-container {
+  width: 100%;
   margin: 50px auto;
   padding: 20px;
+}
+
+.desktop-table {
+  display: none;
+}
+
+.mobile-table {
+  display: table;
+
+  & > tbody > tr > td {
+    padding: 0.3rem 0.5rem;
+    color: #333E46;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+
+    & > div {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      text-align: left;
+    }
+  }
+}
+
+.header-row {
+  background-color: lightgray;
+  text-align: left;
+
+  & > th {
+    padding: 0.5rem 0.75rem;
+    background: #F1F1F1;
+    color: #333E46;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: left;
+
+    & > div {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      text-align: left;
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .desktop-table {
+    display: table;
+  }
+
+  .mobile-table {
+    display: none;
+  }
 }

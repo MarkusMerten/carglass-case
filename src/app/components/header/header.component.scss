@@ -1,3 +1,13 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+.header-username {
+  display: none;
+}
+
+@media (min-width: 576px) {
+  .header-username {
+    display: inline;
+  }
+}

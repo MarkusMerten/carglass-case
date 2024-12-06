@@ -13,10 +13,10 @@ import {
 } from '@angular/material/table';
 import { User } from '@models/user.model';
 import { MatIcon } from '@angular/material/icon';
-import { MatButton, MatFabButton, MatMiniFabButton } from '@angular/material/button';
+import {MatButton, MatFabButton, MatIconButton, MatMiniFabButton} from '@angular/material/button';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AsyncPipe, NgIf } from '@angular/common';
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import { selectUsers } from '@state/user/user.selector';
 import { removeUser } from '@state/user/user.actions';
 import { AppConstants } from '@constants/app-constants';
@@ -40,7 +40,9 @@ import { AppConstants } from '@constants/app-constants';
     MatMiniFabButton,
     MatButton,
     AsyncPipe,
-    NgIf
+    NgIf,
+    MatIconButton,
+    NgForOf
   ],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss',

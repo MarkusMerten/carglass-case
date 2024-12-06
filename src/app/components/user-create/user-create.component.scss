@@ -1,5 +1,14 @@
 .create-container {
-  width: 40%;
+  width: 100%;
   margin: 50px auto;
   padding: 20px;
 }
+
+@media (min-width: 576px) {
+  .create-container {
+    width: 40%;
+    margin: 50px auto;
+    padding: 20px;
+  }
+}
+
