@@ -8,7 +8,9 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
 import { AppConstants } from '@constants/app-constants';
-import {TokenData} from '@models/token-data.model';
+import { TokenData } from '@models/token-data.model';
+import { setLoginStatus } from '@state/user/user.actions';
+import { clearToken } from '@state/auth/auth.actions';
 
 @Component({
   selector: 'app-header',
@@ -30,8 +32,15 @@ export class HeaderComponent {
   }
 
   public logout(): void {
-    this.authService.logout().subscribe(() => {
+    const eMail = this.token()?.userName;
+    if (eMail) {
+      this.authService.logout().then(() => {
+        this.store.dispatch(setLoginStatus({eMail: eMail, login: true}));
+        this.store.dispatch(clearToken());
+        this.router.navigate([AppConstants.LOGIN_ROUTE]).then();
+      });
+    } else {
       this.router.navigate([AppConstants.LOGIN_ROUTE]).then();
-    });
+    }
   }
 }

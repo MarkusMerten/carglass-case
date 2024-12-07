@@ -8,4 +8,4 @@ export const removeUser = createAction(
   props<{ user: User }>(),
 );
 
-export const markUserAsLoggedIn = createAction('[User/API] Mark user as logged in', props<{ eMail: string }>());
+export const setLoginStatus = createAction('[User/API] Mark user as logged in', props<{ eMail: string, login: boolean }>());

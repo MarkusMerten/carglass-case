@@ -16,6 +16,6 @@ export class AuthGuardService {
     if (this.authService.isLoggedIn()) {
       return of(true);
     }
-    return of(false);
+    return this.authService.logout().then(() => false);
   }
 }

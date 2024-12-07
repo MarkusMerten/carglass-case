@@ -1,27 +1,75 @@
-# CarglassCase
+# Carglass Case
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+Ein kurzer Überblick über das Projekt und seine Zielsetzung.
 
-## Development server
+## Inhaltsverzeichnis
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. [Über das Projekt](#über-das-projekt)
+2. [Features](#features)
+3. [Technologien](#technologien)
+4. [Voraussetzungen](#voraussetzungen)
+5. [Installation](#installation)
+6. [Entwicklung](#entwicklung)
+7. [Deployment](#deployment)
+8. [Beitrag](#beitrag)
 
-## Code scaffolding
+## Über das Projekt
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Eine einfache Benutzerverwaltung mit simpler Authentifizierungslogik. Man erhält eine Übersicht von Benutzern und kann neue anlegen. 
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Moderne Benutzeroberfläche mit Angular Material
+- Responsive Design für Mobil- und Desktop-Geräte
+- Sicherheit mit Authentifizierung
 
-## Running unit tests
+## Technologien
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- [Angular](https://angular.io/) - Version 17+
+- [TypeScript](https://www.typescriptlang.org/) - Version 5.4.x
+- [NGRX](https://ngrx.io/) - Reaktive Zustandsverwaltung für Angular - Version 17+
+- [Tailwind](https://tailwindcss.com/) SCSS für Styling - Version 3+
+- [Angular Material](https://material.angular.io/) - Komponenten Bibliothek - Version 17+
+- [RxJS](https://rxjs.dev/) - Reaktive Programmierung - Version 7.8.0
+- 
+## Voraussetzungen
 
-## Running end-to-end tests
+Bevor Sie starten, stellen Sie sicher, dass Sie die folgenden Tools installiert haben:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Node.js** (^20.11.1): [Download Node.js](https://nodejs.org/)
+- **Angular CLI** (>= 17.x): Installieren Sie Angular CLI mit `npm install -g @angular/cli`
 
-## Further help
+## Installation
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Klonen Sie das Repository:
+
+   ```bash
+   git clone https://github.com/MarkusMerten/carglass-case.git
+   cd carglass-case
+   ```
+   
+   ```bash
+   npm install
+   ```
+   
+   ```bash
+   ng serve
+   ```
+
+## Entwicklung
+
+### Scripts:
+
+- npm start: Startet den Entwicklungsserver.
+- npm run build: Baut die Anwendung für die Produktion.
+- npm test: Führt Unit-Tests aus.
+
+## Beitrag
+
+Wenn Sie Änderungen vorschlagen möchten:
+
+1. Forken Sie das Repository
+2. Erstellen Sie einen neuen Branch (git checkout -b feature/MeinFeature)
+3. Committen Sie Ihre Änderungen (git commit -m 'Fügt neues Feature hinzu')
+4. Pushen Sie Ihren Branch (git push origin feature/MeinFeature)
+5. Erstellen Sie einen Pull-Request

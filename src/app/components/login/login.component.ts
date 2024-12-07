@@ -8,7 +8,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { merge } from 'rxjs';
 import { MatButton } from '@angular/material/button';
 import { Store } from '@ngrx/store';
-import { markUserAsLoggedIn } from '@state/user/user.actions';
+import { setLoginStatus } from '@state/user/user.actions';
 import { AppConstants } from '@constants/app-constants';
 
 @Component({
@@ -55,7 +55,7 @@ export class LoginComponent {
       this.authService.login(this.formGroup.controls['email'].value, this.formGroup.controls['password'].value).subscribe((value: boolean) => {
         this.loginErrorMessage.set('');
         if (value) {
-          this.store.dispatch(markUserAsLoggedIn({eMail: this.formGroup.controls['email'].value}));
+          this.store.dispatch(setLoginStatus({eMail: this.formGroup.controls['email'].value, login: true}));
           this.router.navigate([AppConstants.USER_LIST_ROUTE]).then();
         } else {
           this.loginErrorMessage.set('Anmeldung nicht erfolgreich. Passwort oder E-Mail falsch!');

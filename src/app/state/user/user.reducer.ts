@@ -1,6 +1,6 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import {
-  addUser, markUserAsLoggedIn,
+  addUser, setLoginStatus,
   removeUser,
 } from './user.actions';
 import { User } from '@models/user.model';
@@ -30,10 +30,10 @@ export const reducer = createReducer(
     return { ...state, users };
   }),
 
-  on(markUserAsLoggedIn, (state, { eMail }) => {
+  on(setLoginStatus, (state, { eMail, login }) => {
     const updatedUsers = state.users.map((user) =>
       user.eMail === eMail
-        ? { ...user, loginDate: new Date() }
+        ? { ...user, loginDate: login ? new Date() : null}
         : user
     );
 
