@@ -5,7 +5,7 @@ import { MatInput } from '@angular/material/input';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { merge } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Roles } from '@models/roles';
+import { RolesModel } from '@models/roles.model';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
 import { Store } from '@ngrx/store';
@@ -48,6 +48,14 @@ export class UserCreateComponent {
       .subscribe(() => this.updateMailError());
   }
 
+  /**
+   * Save method is used to add a new user to the system if the form data is valid.
+   * It extracts the email, name, role from the formGroup and creates a new User object.
+   * The user object is then dispatched to the store to be added.
+   * If the form data is valid, the method navigates to the user list route.
+   *
+   * @return void
+   */
   public save() : void {
     this.updateMailError();
 
@@ -58,10 +66,16 @@ export class UserCreateComponent {
     }
   }
 
-  get getRoles(): Roles [] {
-    return Object.values(Roles);
+  get getRoles(): RolesModel [] {
+    return Object.values(RolesModel);
   }
 
+  /**
+   * Updates the error message for the email input field based on the validation errors.
+   *
+   * @private
+   * @returns {void}
+   */
   private updateMailError(): void {
     if (this.formGroup.controls['email'].hasError('required')) {
       this.eMailErrorMessage.set('Bitte gebe deine E-Mail an!');

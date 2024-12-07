@@ -4,7 +4,7 @@ import {
   removeUser,
 } from './user.actions';
 import { User } from '@models/user.model';
-import { Roles } from '@models/roles';
+import { RolesModel } from '@models/roles.model';
 
 export interface UserState {
   users: User[];
@@ -12,8 +12,8 @@ export interface UserState {
 
 const initialState: UserState = {
   users: [
-    { name: 'Karl Richter', eMail: 'krichter@gmx.de', role: Roles.ADMIN, loginDate: null},
-    { name: 'Markus Merten', eMail: 'markus_merten@gmx.net', role: Roles.ADMIN, loginDate: null}],
+    { name: 'Karl Richter', eMail: 'krichter@gmx.de', role: RolesModel.ADMIN, loginDate: null},
+    { name: 'Markus Merten', eMail: 'markus_merten@gmx.net', role: RolesModel.ADMIN, loginDate: null}],
 };
 
 export const reducer = createReducer(

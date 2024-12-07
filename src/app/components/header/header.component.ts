@@ -31,6 +31,11 @@ export class HeaderComponent {
   constructor(private authService: AuthService, private router: Router) {
   }
 
+  /**
+   * Logs out the current user by clearing the authentication token and updating the login status.
+   *
+   * @return {void}
+   */
   public logout(): void {
     const eMail = this.token()?.userName;
     if (eMail) {

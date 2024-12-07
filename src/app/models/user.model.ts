@@ -1,8 +1,8 @@
-import { Roles } from './roles';
+import { RolesModel } from './roles.model';
 
 export interface User {
   name: string;
   eMail: string;
-  role: Roles;
+  role: RolesModel;
   loginDate: Date | null;
 }

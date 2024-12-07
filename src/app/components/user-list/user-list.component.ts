@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   MatCell,
   MatCellDef,
@@ -13,10 +13,10 @@ import {
 } from '@angular/material/table';
 import { User } from '@models/user.model';
 import { MatIcon } from '@angular/material/icon';
-import {MatButton, MatFabButton, MatIconButton, MatMiniFabButton} from '@angular/material/button';
+import { MatButton, MatFabButton, MatIconButton, MatMiniFabButton } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { selectUsers } from '@state/user/user.selector';
 import { removeUser } from '@state/user/user.actions';
 import { AppConstants } from '@constants/app-constants';
@@ -56,11 +56,21 @@ export class UserListComponent {
 
     constructor(private router: Router) {}
 
-    public onDelete(user: User): void {
+  /**
+   *
+   * @param {User} user - The user object to be deleted.
+   * @return {void}
+   */
+  public onDelete(user: User): void {
       this.store.dispatch(removeUser({user}));
     }
 
-    public createNewUser(): void {
+  /**
+   * Navigates to the create user route.
+   *
+   * @return {void}
+   */
+  public createNewUser(): void {
       this.router.navigate([AppConstants.USER_CREATE_ROUTE]).then();
     }
 

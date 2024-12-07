@@ -9,6 +9,13 @@ import { AppConstants } from '@constants/app-constants';
 export class LoginGuardService {
   constructor(private authService: AuthService, private router: Router) {}
 
+  /**
+   * Check if user is logged in and redirects to user list route if logged in.
+   *
+   * @param {ActivatedRouteSnapshot} route - The activated route snapshot.
+   * @param {RouterStateSnapshot} state - The router state snapshot.
+   * @return {boolean} Whether the user can activate the route or not.
+   */
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,

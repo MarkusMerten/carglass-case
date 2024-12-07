@@ -27,7 +27,7 @@ import { AppConstants } from '@constants/app-constants';
   styleUrl: './login.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   private store = inject(Store);
 
@@ -40,7 +40,16 @@ export class LoginComponent {
   public passwordErrorMessage: WritableSignal<string> = signal('');
   public loginErrorMessage: WritableSignal<string> = signal('');
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router) {}
+
+  /**
+   * Initializes the component after Angular first displays the data-bound properties
+   * and sets the directive or component's input properties. Subscribes to status and value changes
+   * of 'email' and 'password' form controls, and updates corresponding error messages.
+   *
+   * @return {void}
+   */
+  ngOnInit(): void {
     merge(this.formGroup.controls['email'].statusChanges, this.formGroup.controls['email'].valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateMailError());
@@ -48,8 +57,17 @@ export class LoginComponent {
     merge(this.formGroup.controls['password'].statusChanges, this.formGroup.controls['password'].valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updatePasswordError());
-  }
+    }
 
+  /**
+   * Logs in the user using the provided email and password.
+   * If the form group is valid, it calls the authentication service login method
+   * with the email and password from the form group controls.
+   * If the login is successful, it updates the login status and navigates to the user list page.
+   * If the login fails, it sets an error message.
+   *
+   * @return {void}
+   */
   public login() : void {
     if (this.formGroup.valid) {
       this.authService.login(this.formGroup.controls['email'].value, this.formGroup.controls['password'].value).subscribe((value: boolean) => {
@@ -64,6 +82,11 @@ export class LoginComponent {
     }
   }
 
+  /**
+   * Updates the error message for the email input based on the validation errors.
+   * @private
+   * @return {void}
+   */
   private updateMailError(): void {
     if (this.formGroup.controls['email'].hasError('required')) {
       this.eMailErrorMessage.set('Bitte gebe deine eMail an!');
@@ -74,6 +97,12 @@ export class LoginComponent {
     }
   }
 
+  /**
+   * Updates the error message for the password field based on the form controls' error status.
+   *
+   * @private
+   * @return {void}
+   */
   private updatePasswordError(): void {
     if (this.formGroup.controls['password'].hasError('required')) {
       this.passwordErrorMessage.set('Bitte gebe ein Passwort an!');
