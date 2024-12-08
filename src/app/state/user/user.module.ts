@@ -7,9 +7,7 @@ import {provideAnimationsAsync} from '@angular/platform-browser/animations/async
 
 @NgModule({
   imports: [
-    StoreModule.forFeature('user', reducer),
-    EffectsModule.forRoot([userEffects])
+    StoreModule.forFeature('user', reducer)
   ],
-  providers: [provideEffects(userEffects)],
 })
 export class UserModule {}
