@@ -9,3 +9,7 @@ export const removeUser = createAction(
 );
 
 export const setLoginStatus = createAction('[User/API] Set login status for user', props<{ eMail: string, login: boolean }>());
+
+export const loadUsers = createAction('[User/API] Load users');
+
+export const loadUserSuccess = createAction('[User/API] Load user success', props<{users: User[]}>());

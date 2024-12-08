@@ -5,7 +5,7 @@ import { MatInput } from '@angular/material/input';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { merge } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { RolesModel } from '@models/roles.model';
+import { Roles } from '@models/roles.model';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
 import { Store } from '@ngrx/store';
@@ -66,8 +66,8 @@ export class UserCreateComponent {
     }
   }
 
-  get getRoles(): RolesModel [] {
-    return Object.values(RolesModel);
+  get getRoles(): Roles [] {
+    return Object.values(Roles);
   }
 
   /**

@@ -64,7 +64,7 @@ export class AuthService {
    */
   private initTokenData(token: string): void {
     const tokenData: TokenData = new TokenData();
-    tokenData.expiresAt = this.getDatePlusMinutes(2);
+    tokenData.expiresAt = this.getDatePlusMinutes(10);
     tokenData.userName = token;
     localStorage.setItem(this.TOKEN_KEY, JSON.stringify(tokenData));
     this.store.dispatch(setToken({token: tokenData}));

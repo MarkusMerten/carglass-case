@@ -24,7 +24,7 @@ import { AuthModule } from '@state/auth/auth.module';
     HeaderComponent,
     StoreModule.forRoot({}),
     UserModule,
-    AuthModule
+    AuthModule,
   ],
   providers: [provideStore(), provideAnimationsAsync()],
   bootstrap: [AppComponent],

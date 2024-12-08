@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {
   MatCell,
   MatCellDef,
@@ -56,22 +56,22 @@ export class UserListComponent {
 
     constructor(private router: Router) {}
 
-  /**
-   *
-   * @param {User} user - The user object to be deleted.
-   * @return {void}
-   */
-  public onDelete(user: User): void {
-      this.store.dispatch(removeUser({user}));
-    }
+    /**
+     *
+     * @param {User} user - The user object to be deleted.
+     * @return {void}
+     */
+    public onDelete(user: User): void {
+        this.store.dispatch(removeUser({user}));
+      }
 
-  /**
-   * Navigates to the create user route.
-   *
-   * @return {void}
-   */
-  public createNewUser(): void {
-      this.router.navigate([AppConstants.USER_CREATE_ROUTE]).then();
+    /**
+     * Navigates to the create user route.
+     *
+     * @return {void}
+     */
+    public createNewUser(): void {
+        this.router.navigate([AppConstants.USER_CREATE_ROUTE]).then();
     }
 
 }
