@@ -13,3 +13,5 @@ export const setLoginStatus = createAction('[User/API] Set login status for user
 export const loadUsers = createAction('[User/API] Load users');
 
 export const loadUserSuccess = createAction('[User/API] Load user success', props<{users: User[]}>());
+
+export const addUserSuccess = createAction('[User/API] Load users', props<{ user: User }>());
